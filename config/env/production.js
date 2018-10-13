@@ -22,7 +22,7 @@ var connection={
   USERID:'nodejsapp@procurenodejs',
   PASSWORD:'Suite1702',
   HOST:'procurenodejs.mysql.database.azure.com',
-  DATABASE:'staging'
+  DATABASE:'quiz'
 };
 module.exports = {
   
