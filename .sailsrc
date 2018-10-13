@@ -1,0 +1,23 @@
+{
+
+    "commands": {
+
+        "deploy": {
+
+            "module": "sails-deploy-azure"
+
+        }
+
+    },
+
+    "azure": {
+
+        "sitename": "http://procurenodejswebapp.azurewebsites.net",
+
+        "username": "nodejsapp@procurenodejs",
+
+        "password": "Suite1702"
+
+    }
+
+}

@@ -1,0 +1,79 @@
+ 
+ 
+ <%- include('../../emailTemplates/emailHeader'); -%>
+ <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:660px;background-color: #f6f3e8;">
+    <tr>
+        <td>
+            <table cellspacing="0" cellpadding="0" border="0" bgcolor="#f6f3e8" width="100%" style="max-width: 660px;" align="center">
+                <tr>
+                    <td height="40" style="font-size: 40px; line-height: 40px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" style="font-family: 'Montserrat', Arial, sans-serif; font-size:20px; line-height:26px; color:#222222; font-weight:bold; text-transform:uppercase;" class="body-text">
+                        <h2 style="font-family: 'Montserrat', Arial, sans-serif; font-size:12px; line-height:26px; color:#222222; font-weight:bold; text-transform:capitalize; padding:0 20px; margin:0;" class="body-text">
+                            Hi,<br/>
+                            <%= response[0].employee_id.first_name%> added new timesheet
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td height="10" style="font-size: 10px; line-height: 10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top" style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:20px; color:#666666;" class="body-text">
+                        <p style="font-family: 'Montserrat', Arial, sans-serif; font-size:14px; line-height:24px; color:#666666; padding:0 20px; margin:0;" class="body-text"><b>New Timesheet Detail are as follows : </b><br>
+                            <label> <b>Project Type :</b> </label>  
+                           <%= response[0].project_id.project_type%>
+                            <br/>
+                            <label> <b>Project Details :</b> </label>                         
+                               <%= response[0].project_id.project_details%>
+
+                            <br/>
+                            <label> <b>Project Start Date
+                                :</b> </label> 
+                                 <%= new Date(response[0].project_id.start_date).getFullYear() %>-
+                                <%= new Date(response[0].project_id.start_date).getMonth()+1 %>-
+                                <%= new Date(response[0].project_id.start_date).getDate() %>
+                            </p>
+                            <br/>
+                            <table class="table table-bordered table-striped" style="font-size: 14px; padding: 10px 0;" width="100%">
+                                <thead style="background-color: #4e4e4e;color: #fff;text-align: center;">
+                                    <tr>
+                                        <th style="text-align: center;">Date</th>
+                                        <th style="text-align: center;">Start Time</th>
+                                        <th style="text-align: center;">End Time</th>
+                                        <th style="text-align: center;">Total Time</th>
+                                        <th style="text-align: center;">Over Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% for(var i=0; i < response.length; i++) { %>
+                                        <tr>
+                                            <td style="text-align: center;">
+                                                <%= new Date(response[i].project_date).getFullYear() %>-
+                                                <%= new Date(response[i].project_date).getMonth()+1 %>-
+                                                <%= new Date(response[i].project_date).getDate() %>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <%= response[i].start_time %>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <%= response[i].end_time %>
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <%= response[i].tot_time %> hours
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <%= response[i].over_time %> hours
+                                            </td>
+                                        </tr>
+                                        <% } %>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <%- include('../../emailTemplates/emailFooter'); -%> 
