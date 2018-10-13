@@ -258,7 +258,7 @@ module.exports = {
       *                                                                          *
       ***************************************************************************/
       onlyAllowOrigins: [
-        'https://procurenodejswebapp.azurewebsites.net'
+        'https://ptsexamportal.azurewebsites.net'
       ],
       
       

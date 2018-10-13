@@ -1,12 +1,20 @@
 module.exports = {
-  tableName: 'candidate_master',
+  tableName: 'candidate',
    attributes: {
      
-    id:{type:'number', autoIncrement: true,columnName:'candidateid'  },   
+    id:{type:'number', autoIncrement: true,  },   
     candidate_name:{type:'string',required:true},
     candidate_email:{type:'string',required:true},
     createdAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},
     updatedAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},
+    phone:{type:'number',required:true},
+    resume:{type:'string',required:true},
+    address:{type:'string',required:true},
+    skill:{type:'string',required:true},
+    experience:{type:'number',required:true},
+    education:{type:'string',required:true},
+    refrence:{type:'string',required:true},
+ 
     
   },
 };

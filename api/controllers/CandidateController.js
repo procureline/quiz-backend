@@ -21,6 +21,20 @@ module.exports = {
             return ResponseService.json(500, res, err)
         });
     },
+    async addCandidate(req,res){
+        let request_data=req.body;
+
+
+        
+        await Candidate.create(request_data)
+        .then(function (result){
+            return ResponseService.json(200, res, "Fetch Successful", result)
+        })
+        .catch(function(err){
+            return ResponseService.json(500, res, err)
+        });
+    },
+
 
 };
 

@@ -15,6 +15,12 @@ module.exports.routes = {
   '/question-listing': {
     view: 'pages/homepage',
   },
+  '/quiz': {
+    view: 'pages/homepage',
+  },
+  '/candidate': {
+    view: 'pages/homepage',
+  },
 
  
   //
@@ -41,6 +47,7 @@ module.exports.routes = {
 
   'POST /api/assign-exam-candidate': 'ExamController.assignExamCandidate', 
   'POST /api/deactive-question': 'QuestionController.deactiveQuestion', 
+  'POST /api/add-candidate': 'Candidate.addCandidate', 
 
  
 }
