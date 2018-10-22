@@ -11,7 +11,7 @@ module.exports = {
             return ResponseService.json(400 , res, "Please enter email and password")
         }
         await Admin.findOne({sa_email:request_data.email,sa_password:md5(request_data.password)})
-        .then(function (user){
+        .then((user)=>{
             if(!user) {
                 return ResponseService.json(400  , res, "Invalid email or password")
             }
@@ -22,7 +22,7 @@ module.exports = {
             }
             return ResponseService.json(200, res, "Login Successful", responseData)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },

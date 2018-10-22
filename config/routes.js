@@ -21,6 +21,9 @@ module.exports.routes = {
   '/candidate': {
     view: 'pages/homepage',
   },
+  '/candidate/listing': {
+    view: 'pages/homepage',
+  },
 
  
   //
@@ -48,6 +51,9 @@ module.exports.routes = {
   'POST /api/assign-exam-candidate': 'ExamController.assignExamCandidate', 
   'POST /api/deactive-question': 'QuestionController.deactiveQuestion', 
   'POST /api/add-candidate': 'Candidate.addCandidate', 
+  'POST /api/delete-candidate': 'Candidate.deleteCandidate', 
+  'GET /api/get-candidate-byid': 'Candidate.getCandidateById', 
 
- 
+  'POST /api/add-candidate-resume': 'Candidate.addResume', 
+
 }

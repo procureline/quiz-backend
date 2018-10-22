@@ -1,4 +1,4 @@
-module.exports = function (req, res, next) {  
+module.exports =  (req, res, next)=> {  
   let token;
   if (req.headers && req.headers.authorization) {
     var parts = req.headers.authorization.split(' ');
@@ -17,11 +17,11 @@ module.exports = function (req, res, next) {
   } else {
     return ResponseService.json(401, res, "No authorization header was found");
   }
-  JwtService.verify(token, function(err, decoded){
+  JwtService.verify(token, (err, decoded)=>{
     if (err) return ResponseService.json(401, res, "Invalid Token!");
     req.token = token;
     Admin.findOne({id: decoded.id})
-    .then(function(user){
+    .then((user)=>{
 
       req.current_user = user;
       next();

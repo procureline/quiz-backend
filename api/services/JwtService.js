@@ -2,12 +2,12 @@ var jwt = require('jsonwebtoken');
 var jwtSecret = sails.config.secrets.jwtSecret;
 
 module.exports = {  
-  issue: function (payload) {
+  issue:  (payload)=> {
     token = jwt.sign(payload, jwtSecret, {expiresIn: '168h'})
     return token
   },
 
-  verify: function (token, callback) {
+  verify:  (token, callback) =>{
     return jwt.verify(token, jwtSecret, callback);
   }
 

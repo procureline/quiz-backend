@@ -1,5 +1,5 @@
 module.exports = {  
-    json: function (status, res, message, data, meta) {
+    json:  (status, res, message, data, meta)=> {
         var response = {
             response: {
                 message: message

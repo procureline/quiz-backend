@@ -10,10 +10,10 @@ module.exports = {
             title:request_data.title,
         }
         await Skill.create(obj)
-        .then(function (result){
+        .then( (result)=>{
             return ResponseService.json(200, res, "Record created successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -25,12 +25,12 @@ module.exports = {
     async getSkill(req,res){
         let request_data=req.body;
         await Skill.find({})
-        .then(function (result){
+        .then( (result)=>{
             return result;
         })
-        .then(function (result){
+        .then( (result)=>{
             let skill=[]
-            async.each(result,async function(item,cb){
+            async.each(result,async (item,cb)=>{
                 let object= Object.assign({});
                 object.title=item.title;
                 object.id=item.id;
@@ -42,11 +42,11 @@ module.exports = {
                 object.difficulty_selected=0;
                 skill.push(object)   ;          
                 cb()
-            },function(){
+            },()=>{
                 return ResponseService.json(200, res, "Record fetch Successful", skill)
             })
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -63,10 +63,10 @@ module.exports = {
         await Skill.update({   
             id: request_data.id,
         }).set(obj).fetch()
-        .then(function (result){
+        .then( (result)=>{
             return ResponseService.json(200, res, "Record fetch Successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -80,10 +80,10 @@ module.exports = {
         await Skill.destroy({   
             id: request_data.id,
         }) 
-        .then(function (result){
+        .then( (result)=>{
             return ResponseService.json(200, res, "Record fetch Successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },

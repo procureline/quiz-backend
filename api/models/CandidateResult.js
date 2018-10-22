@@ -7,7 +7,7 @@ module.exports = {
     score:{type:'number',},
     total_question:{type:'number',required:true},
     examination_code:{type:'string',required:true},
-    level:{type:'json',required:true},
+    level:{type:'string',required:true},
     exam_over:{type:'number'},
     createdAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},
     updatedAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},

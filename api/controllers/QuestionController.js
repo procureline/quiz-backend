@@ -18,16 +18,16 @@ module.exports = {
             level:param.level
         }
         await Question.create(obj)
-        .then(function (result){
+        .then( (result)=>{
             if(param.image_available){
-                uploadfile.moveupload(req,setfilename).then(function(data){
+                uploadfile.moveupload(req,setfilename).then((data)=>{
                     return ResponseService.json(200, res, "File uploaded Successful", data)
                 }) 
             }else{
                 return ResponseService.json(500, res, "Server Error", err);
             }
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -42,9 +42,9 @@ module.exports = {
             skill: request_data.skill,
         }
         await Question.find(obj)
-        .then(function (result){
+        .then( (result)=>{
             let ques=[]
-            async.each(result,function(item,cb){
+            async.each(result,(item,cb)=>{
                 let object=Object.assign({});
                 object.answer=item.answer;
                 object.code=item.code;
@@ -58,11 +58,11 @@ module.exports = {
                 object.status=item.status;
                 ques.push(object);
                 cb();
-            },function(){
+            },()=>{
                 return ResponseService.json(200, res, "Record fetch Successful",ques);
             })
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -88,9 +88,9 @@ module.exports = {
             }
         ]
         console.log('tag', level,'level');
-        let question=  new Promise(function(resolve,reject){
+        let question=  new Promise((resolve,reject)=>{
             let ques=[] 
-            async.each(level , async function(item,cb){
+            async.each(level , async (item,cb)=>{
                 let val={};
                      let obj={
                         where:{ skill: request_data.skill,level:item.level,status:1},
@@ -98,7 +98,7 @@ module.exports = {
                     }
                     await Question.find(obj)
                     .limit(item.limtcall)
-                    .then(function (result){
+                    .then( (result)=>{
 
                         val[item.level]=result;
                             ques.push(val);
@@ -107,15 +107,15 @@ module.exports = {
                         cb();
                     })
                
-            },function(){
+            },()=>{
                 resolve(ques);
             })
         })
-        question.then(function(data){
+        question.then((data)=>{
             return ResponseService.json(200, res, "fetch Successful", data)
         })
          
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -130,7 +130,7 @@ module.exports = {
             id: request_data.id,
         }
         await Question.findOne(obj)
-        .then(function (result){
+        .then( (result)=>{
             if(result.image!=''){
                 let image=`${sails.config.custom.imageUrl}/images/${result.image}`
             }else{
@@ -139,7 +139,7 @@ module.exports = {
             result.image=image
             return ResponseService.json(200, res, "Record fetch Successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -164,16 +164,16 @@ module.exports = {
         await  Question.update({   
             id: param.id,
         }).set(obj)
-        .then(function (result){
+        .then( (result)=>{
             if(param.image_available){
-                uploadfile.moveupload(req,setfilename).then(function(data){
+                uploadfile.moveupload(req,setfilename).then((data)=>{
                     return ResponseService.json(200, res, "update Successful", result)
                 }) 
             }else{
                 return ResponseService.json(200, res, "update Successful", result)
             }
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -187,10 +187,10 @@ module.exports = {
         await Question.destroy({   
             id: request_data.id,
         }) 
-        .then(function (result){
+        .then( (result)=>{
             return ResponseService.json(200, res, "fetch Successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
@@ -210,10 +210,10 @@ module.exports = {
         await  Question.update({   
             id: request_data.id,
         }).set(obj)
-        .then(function (result){
+        .then( (result)=>{
             return ResponseService.json(200, res, "update Successful", result)
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
     },

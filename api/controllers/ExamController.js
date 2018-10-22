@@ -6,7 +6,7 @@ module.exports = {
     //
     async addExam(req,res){
         let request_data=req.body;
-        async.each(request_data,async function(item,cb){
+        async.each(request_data,async (item,cb)=>{
             sails.log(item.id)
             let obj={
                 examination_code: item.examination_code,
@@ -15,16 +15,16 @@ module.exports = {
                 skill_id:item.skill
             }
             await Exam.create(obj)
-            .then(function (result){
+            .then((result)=>{
                 cb();
             })
-        },async function(){
+        },async ()=>{
           await  CandidateResult.update({examination_code:request_data.examination_code,skill_id:request_data[0].skill})
             .set({exam_over:1})
-            .then(function(result){
+            .then((result)=>{
                 return ResponseService.json(200, res, "Record updated",result);
             })
-            .catch(function(err){
+            .catch((err)=>{
                 return ResponseService.json(500, res, "Server Error", err);
             })
         })
@@ -37,13 +37,13 @@ module.exports = {
     async getCandidateResult(req,res){
         let request_data=req.query; 
        await CandidateResult.find({candidate_id: request_data.id}).populate('skill_id')
-        .then(function(result){
+        .then((result)=>{
             if(!result || result.length<1 ){
                 return ResponseService.json(401, res, "No data found", result);
             }
             return ResponseService.json(200, res, "Record fetch Successful",result);
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         })
     },
@@ -57,10 +57,10 @@ module.exports = {
        await Exam.find({skill_id:request_data.skill_id,examination_code:request_data.examination_code})
         .populate('question')
         .populate('skill_id')
-        .then(function(result){
+        .then((result)=>{
             return ResponseService.json(200, res, "Record fetch Successful",result);
         })
-        .catch(function(err){
+        .catch((err)=>{
             return ResponseService.json(500, res, "err", err);
         })
     },
@@ -74,7 +74,7 @@ module.exports = {
         let date= new Date();
         let examination_code =   `PTS-${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}-${date.getHours()}${date.getMinutes()}${ date.getSeconds()}`
         let total_question=0
-        async.each(request_data.category, async function(item,cb){
+        async.each(request_data.category, async (item,cb)=>{
             if(item.checked===true){
                 let level={
                     easy_selected:item.easy_selected,
@@ -91,16 +91,16 @@ module.exports = {
                 }  
                 console.info(obj);
              await   CandidateResult.create(obj )
-                .then(function(result){
+                .then((result)=>{
                     cb()
                 })
             }else{
                 cb()
             }
-        },function(){
+        },()=>{
             return ResponseService.json(200, res, "Record added successful",{examination_code:examination_code});
         })
-        //     .catch(function(err){
+        //     .catch((err){
         //         return ResponseService.json(500, res, "err", err);
         //     })
     }

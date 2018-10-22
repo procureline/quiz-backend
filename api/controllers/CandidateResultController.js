@@ -15,7 +15,7 @@ module.exports = {
                 where:  {examination_code: request_data.examination_code ,exam_over:0},
             }
             ).populate('skill_id').populate('candidate_id')
-            .then(function (result){
+            .then( (result)=>{
                 if(result.length<1){
                     return ResponseService.json(401, res, "Not match Or Exam Expired", result)
                 }
@@ -29,7 +29,7 @@ module.exports = {
                 }
                 return ResponseService.json(200, res, "Examination code match successful", responseData)
             })
-            .catch(function(err){
+            .catch((err)=>{
                 return ResponseService.json(500, res, "Server Error", err);
             });
         },
