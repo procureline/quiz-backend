@@ -11,7 +11,7 @@ module.exports = {
         }
         await Skill.create(obj)
         .then( (result)=>{
-            return ResponseService.json(200, res, "Record created successful", result)
+            return ResponseService.json(200, res, "Skill created successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -43,7 +43,7 @@ module.exports = {
                 skill.push(object)   ;          
                 cb()
             },()=>{
-                return ResponseService.json(200, res, "Record fetch Successful", skill)
+                return ResponseService.json(200, res, "Skill retrieve successful", skill)
             })
         })
         .catch((err)=>{
@@ -64,7 +64,7 @@ module.exports = {
             id: request_data.id,
         }).set(obj).fetch()
         .then( (result)=>{
-            return ResponseService.json(200, res, "Record fetch Successful", result)
+            return ResponseService.json(200, res, "Skill updated Successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -81,7 +81,7 @@ module.exports = {
             id: request_data.id,
         }) 
         .then( (result)=>{
-            return ResponseService.json(200, res, "Record fetch Successful", result)
+            return ResponseService.json(200, res, "Skill deleted successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);

@@ -8,7 +8,7 @@ module.exports = {
         let request_data=req.query;
         await Candidate.find()
         .then((result)=>{
-            return ResponseService.json(200, res, "Fetch Successful", result)
+            return ResponseService.json(200, res, "Candidate retrieve successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, err)
@@ -25,7 +25,7 @@ module.exports = {
         .then( async (result)=>{
             sails.log('result',result)
             if(result>0 ){
-                return ResponseService.json(400, res, "email already exists ", result)
+                return ResponseService.json(400, res, "Candidate Email already exists ", result)
             }
             else{
                 let obj={
@@ -42,7 +42,7 @@ module.exports = {
                 console.log(obj);
                 await Candidate.create(obj).fetch()
                 .then(function (result){
-                    return ResponseService.json(200, res, "Fetch Successful", result)
+                    return ResponseService.json(200, res, "Candidate created successful", result)
                 })
             }
         }) 
@@ -59,7 +59,7 @@ module.exports = {
         let request_data=req.body;
         await Candidate.destroy({id:request_data.id})
         .then((result)=>{
-            return ResponseService.json(200, res, "delete Successful", result)
+            return ResponseService.json(200, res, "Candidate deleted Successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, err)
@@ -91,7 +91,7 @@ module.exports = {
             val['resume']=item.resume
             val['skill']=skill
             candidate.push(val)
-            return ResponseService.json(200, res, "Fetch Successful", candidate)
+            return ResponseService.json(200, res, "Candidate retrieve successful", candidate)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, err)
@@ -105,7 +105,7 @@ module.exports = {
             sails.log(data)
             await Candidate.update({id:param.id}).set({resume:setfilename})
             .then((result)=>{
-                return ResponseService.json(200, res, "Fetch Successful", result)
+                return ResponseService.json(200, res, "Candidate Rresume uploaded successful", result)
             })
         }) 
         .catch((err)=>{

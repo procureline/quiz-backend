@@ -20,7 +20,7 @@ module.exports = {
                 user: user,
                 token: JwtService.issue({email:user.sa_email,id:user.id,username:user.sa_name,type:'admin'})
             }
-            return ResponseService.json(200, res, "Login Successful", responseData)
+            return ResponseService.json(200, res, "Admin Login Successful", responseData)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);

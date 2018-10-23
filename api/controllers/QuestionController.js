@@ -21,7 +21,7 @@ module.exports = {
         .then( (result)=>{
             if(param.image_available){
                 uploadfile.moveupload(req,setfilename).then((data)=>{
-                    return ResponseService.json(200, res, "File uploaded Successful", data)
+                    return ResponseService.json(200, res, "Question created Successful", data)
                 }) 
             }else{
                 return ResponseService.json(500, res, "Server Error", err);
@@ -59,7 +59,7 @@ module.exports = {
                 ques.push(object);
                 cb();
             },()=>{
-                return ResponseService.json(200, res, "Record fetch Successful",ques);
+                return ResponseService.json(200, res, "Question retrieve successful",ques);
             })
         })
         .catch((err)=>{
@@ -112,7 +112,7 @@ module.exports = {
             })
         })
         question.then((data)=>{
-            return ResponseService.json(200, res, "fetch Successful", data)
+            return ResponseService.json(200, res, "Question retrieve successful",ques);
         })
          
         .catch((err)=>{
@@ -137,7 +137,7 @@ module.exports = {
                 let image=null
             }
             result.image=image
-            return ResponseService.json(200, res, "Record fetch Successful", result)
+            return ResponseService.json(200, res, "Question retrieve successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -170,7 +170,7 @@ module.exports = {
                     return ResponseService.json(200, res, "update Successful", result)
                 }) 
             }else{
-                return ResponseService.json(200, res, "update Successful", result)
+                return ResponseService.json(200, res, "Question updated successful", result)
             }
         })
         .catch((err)=>{
@@ -188,7 +188,7 @@ module.exports = {
             id: request_data.id,
         }) 
         .then( (result)=>{
-            return ResponseService.json(200, res, "fetch Successful", result)
+            return ResponseService.json(200, res, "Question deleted Successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -207,11 +207,12 @@ module.exports = {
             status:request_data.status,
     
         }
+        const action =(request_data.status==1)?'active':'deactive';
         await  Question.update({   
             id: request_data.id,
         }).set(obj)
         .then( (result)=>{
-            return ResponseService.json(200, res, "update Successful", result)
+            return ResponseService.json(200, res, `Question ${action} successful`, result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);

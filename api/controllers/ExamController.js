@@ -22,7 +22,7 @@ module.exports = {
           await  CandidateResult.update({examination_code:request_data.examination_code,skill_id:request_data[0].skill})
             .set({exam_over:1})
             .then((result)=>{
-                return ResponseService.json(200, res, "Record updated",result);
+                return ResponseService.json(200, res, "Exam added successful",result);
             })
             .catch((err)=>{
                 return ResponseService.json(500, res, "Server Error", err);
@@ -39,9 +39,9 @@ module.exports = {
        await CandidateResult.find({candidate_id: request_data.id}).populate('skill_id')
         .then((result)=>{
             if(!result || result.length<1 ){
-                return ResponseService.json(401, res, "No data found", result);
+                return ResponseService.json(401, res, "No exam assigned to candidate", result);
             }
-            return ResponseService.json(200, res, "Record fetch Successful",result);
+            return ResponseService.json(200, res, "Candidate Result retrieve successful",result);
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -58,7 +58,7 @@ module.exports = {
         .populate('question')
         .populate('skill_id')
         .then((result)=>{
-            return ResponseService.json(200, res, "Record fetch Successful",result);
+            return ResponseService.json(200, res, "Candidate Score retrieve successful",result);
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "err", err);
@@ -98,7 +98,7 @@ module.exports = {
                 cb()
             }
         },()=>{
-            return ResponseService.json(200, res, "Record added successful",{examination_code:examination_code});
+            return ResponseService.json(200, res, "Exam assign successful",{examination_code:examination_code});
         })
         //     .catch((err){
         //         return ResponseService.json(500, res, "err", err);
