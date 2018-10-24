@@ -18,6 +18,9 @@
 
         "password": "Suite1702"
 
-    }
-
+    },
+ "paths": {
+    "public": "assets"
+  }
 }
+ 

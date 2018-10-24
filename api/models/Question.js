@@ -7,7 +7,7 @@ module.exports = {
     answer:{type:'json',required:true},
     skill:{model:'Skill'},
     image:{type:'string'},
-    level:{type:'string',enum: ['easy', 'medium', 'difficulty']
+    level:{type:'string',isIn: ['easy', 'medium', 'difficulty']
   },
     correct_answer:{type:'number',required:true},
     status:{type:'number',required:true},
