@@ -92,29 +92,24 @@ module.exports = {
             let ques=[] 
             async.each(level , async (item,cb)=>{
                 let val={};
-                     let obj={
-                        where:{ skill: request_data.skill,level:item.level,status:1},
-                        select:['answer','status','code','createdAt','id','image','question','skill','updatedAt']
-                    }
-                    await Question.find(obj)
-                    .limit(item.limtcall)
-                    .then( (result)=>{
-
-                        val[item.level]=result;
-                            ques.push(val);
-                            
-                            
-                        cb();
-                    })
-               
+                let obj={
+                    where:{ skill: request_data.skill,level:item.level,status:1},
+                    select:['answer','status','code','createdAt','id','image','question','skill','updatedAt']
+                }
+                await Question.find(obj)
+                .limit(item.limtcall)
+                .then( (result)=>{
+                    val[item.level]=result;
+                    ques.push(val);
+                    cb();
+                })
             },()=>{
                 resolve(ques);
             })
         })
         question.then((data)=>{
-            return ResponseService.json(200, res, "Question retrieve successful",ques);
+            return ResponseService.json(200, res, "Question retrieve successful",data);
         })
-         
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
         });
@@ -131,12 +126,8 @@ module.exports = {
         }
         await Question.findOne(obj)
         .then( (result)=>{
-            if(result.image!=''){
-                let image=`${sails.config.custom.imageUrl}/images/${result.image}`
-            }else{
-                let image=null
-            }
-            result.image=image
+            sails.log(result)
+            result.image=(result.image!='')?`${sails.config.custom.imageUrl}/images/${result.image}`:''
             return ResponseService.json(200, res, "Question retrieve successful", result)
         })
         .catch((err)=>{
@@ -194,8 +185,6 @@ module.exports = {
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
-
-
     //
     // ────────────────────────────────────────────────────────────────────────── I ──────────
     //   :::::: D E A C T I V E   Q U E S T I O N : :  :   :    :     :        :          :
@@ -203,9 +192,8 @@ module.exports = {
     //
     async deactiveQuestion(req,res){
         let request_data=req.body;
-         let obj={
+        let obj={
             status:request_data.status,
-    
         }
         const action =(request_data.status==1)?'active':'deactive';
         await  Question.update({   
@@ -219,4 +207,21 @@ module.exports = {
         });
     },
     
+    async updateQuestion(req,res){
+        let request_data=req.body;
+        let setfilename=`${Date.now()}.doc`
+        let param=JSON.parse(request_data.param)
+
+        sails.log(req)
+        uploadfile.moveupload(req,setfilename).then(async (data)=>{
+            sails.log(data)
+            await Question.update({id:param.id}).set({image:setfilename})
+            .then((result)=>{
+                return ResponseService.json(200, res, "Question image uploaded successful", result)
+            })
+        }) 
+        .catch((err)=>{
+            return ResponseService.json(500, res, err)
+        });
+    },
 };

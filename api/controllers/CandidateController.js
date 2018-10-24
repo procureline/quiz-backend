@@ -97,6 +97,7 @@ module.exports = {
             return ResponseService.json(500, res, err)
         });
     },
+
     async addResume(req,res){
         let request_data=req.body;
         let setfilename=`${Date.now()}.doc`
@@ -111,5 +112,40 @@ module.exports = {
         .catch((err)=>{
             return ResponseService.json(500, res, err)
         });
-    }
-};
+    },
+    async updateCandidate(req,res){
+        let request_data=req.body;
+        await Candidate.count({
+            candidate_email:request_data.candidate_email,            
+            id:{'!':request_data.id}
+        
+        })
+        .then( async (result)=>{
+            sails.log('result',result)
+            if(result>0 ){
+                return ResponseService.json(400, res, "Candidate Email already exists ", result)
+            }
+            else{
+                let obj={
+                    candidate_name: request_data.candidate_name,
+                    candidate_email: request_data.candidate_email,
+                    phone: request_data.phone,
+                     address: request_data.address,
+                    skill: request_data.skill.toString(),
+                    experience: request_data.experience,
+                    education: request_data.education,
+                    refrence: request_data.refrence,
+                }
+                console.log(obj);
+                await Candidate.update({id:request_data.id}).set(obj)
+                .then(function (result){
+                    return ResponseService.json(200, res, "Candidate updated successful", result)
+                })
+            }
+        }) 
+        .catch((err)=>{
+            return ResponseService.json(500, res, err)
+        });
+    },
+
+ };

@@ -53,7 +53,9 @@ module.exports.routes = {
   'POST /api/add-candidate': 'Candidate.addCandidate', 
   'POST /api/delete-candidate': 'Candidate.deleteCandidate', 
   'GET /api/get-candidate-byid': 'Candidate.getCandidateById', 
+  'POST /api/update-candidate': 'Candidate.updateCandidate', 
 
   'POST /api/add-candidate-resume': 'Candidate.addResume', 
-
+  'POST /api/update-question-image': 'Candidate.updateQuestion', 
+  
 }
