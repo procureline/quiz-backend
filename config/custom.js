@@ -21,6 +21,8 @@ module.exports.custom = {
   // …
    webapiurl:'http://pnccap-staging.azurewebsites.net',
    imageUrl:'https://ptsexamportal.azurewebsites.net',
+  //  webapiurl:'http://localhost:1337',
+  //  imageUrl:'http://localhost:1337',
  
   
 };

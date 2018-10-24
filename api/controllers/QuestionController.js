@@ -5,27 +5,18 @@ module.exports = {
     // ────────────────────────────────────────────────────────────────────────
     //
     async addQuestion(req,res){
-        let request_data=req.body;
-        let setfilename=`${Date.now()}.png`
-        let param=JSON.parse(request_data.param)
+        let param=req.body;
         let obj={
             question:param.question,
             answer:param.answer,
             code:param.code,
             skill: param.skill,
             correct_answer:param.correct_answer,
-            image:setfilename,
             level:param.level
         }
         await Question.create(obj)
         .then( (result)=>{
-            if(param.image_available){
-                uploadfile.moveupload(req,setfilename).then((data)=>{
-                    return ResponseService.json(200, res, "Question created Successful", data)
-                }) 
-            }else{
-                return ResponseService.json(500, res, "Server Error", err);
-            }
+            return ResponseService.json(200, res, "Question created Successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -140,29 +131,20 @@ module.exports = {
     // ──────────────────────────────────────────────────────────────────────────────
     //
     async updateQuestion(req,res){
-        let request_data=req.body;
-        let setfilename=`${Date.now()}.png`
-        let param=JSON.parse(request_data.param)
+        let param=req.body;
         let obj={
             question:param.question,
             answer:param.answer,
             code:param.code,
             skill: param.skill,
             correct_answer:param.correct_answer,
-            image:setfilename,
             level:param.level
         }
         await  Question.update({   
             id: param.id,
         }).set(obj)
         .then( (result)=>{
-            if(param.image_available){
-                uploadfile.moveupload(req,setfilename).then((data)=>{
-                    return ResponseService.json(200, res, "update Successful", result)
-                }) 
-            }else{
-                return ResponseService.json(200, res, "Question updated successful", result)
-            }
+            return ResponseService.json(200, res, "update Successful", result)
         })
         .catch((err)=>{
             return ResponseService.json(500, res, "Server Error", err);
@@ -206,13 +188,12 @@ module.exports = {
             return ResponseService.json(500, res, "Server Error", err);
         });
     },
-    
-    async updateQuestion(req,res){
+    async updateQuestionImage(req,res){
         let request_data=req.body;
-        let setfilename=`${Date.now()}.doc`
+        let setfilename=`${Date.now()}.jpg`
         let param=JSON.parse(request_data.param)
-
-        sails.log(req)
+        sails.log(request_data)
+        
         uploadfile.moveupload(req,setfilename).then(async (data)=>{
             sails.log(data)
             await Question.update({id:param.id}).set({image:setfilename})
