@@ -9,6 +9,7 @@ module.exports = {
     examination_code:{type:'string',required:true},
     level:{type:'json',required:true},
     exam_over:{type:'number'},
+    exam_finished:{type:'string',isIn: ['time_over', 'manually', 'tab_change']},
     createdAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},
     updatedAt:{type:'ref', columnType:'datetime', autoCreatedAt: true,},
    

@@ -47,6 +47,7 @@ module.exports.routes = {
   'GET /api/get-candidate': 'CandidateController.getCandidate', 
   'GET /api/get-candidate-result': 'ExamController.getCandidateResult', 
   'GET /api/get-candidate-score': 'ExamController.getCandidateScore', 
+  'GET /api/get-candidate-totalscore': 'ExamController.getCandidateTotalScore', 
 
   'POST /api/assign-exam-candidate': 'ExamController.assignExamCandidate', 
   'POST /api/deactive-question': 'QuestionController.deactiveQuestion', 
