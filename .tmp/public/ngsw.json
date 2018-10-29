@@ -1,0 +1,99 @@
+{
+  "configVersion": 1,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/candidate-candidate-module-ngfactory.168451963511fd966c6b.js",
+        "/candidate-candidate-module-ngfactory~dashboard-dashboard-module-ngfactory~login-login-module-ngfacto~0770bc37.7a0999348e1ae0fd3bf4.js",
+        "/candidate-candidate-module-ngfactory~dashboard-dashboard-module-ngfactory~questionlisting-questionli~da50e860.ef74efdee0b6c06e2c39.js",
+        "/candidate-candidate-module-ngfactory~questionlisting-questionlisting-module-ngfactory.b4142dc122a03c7b1e77.js",
+        "/common.9c09a8660ca802e9e27a.js",
+        "/dashboard-dashboard-module-ngfactory.657511b34b608260c6f4.js",
+        "/favicon.ico",
+        "/index.html",
+        "/instruction-instruction-module-ngfactory.497ab0b69b72974474df.js",
+        "/login-login-module-ngfactory.723a133714b8ff79b9fe.js",
+        "/main.f074fdc12ce59f1b6ca3.js",
+        "/polyfills.386e7f94cf2010bfbabf.js",
+        "/questionlisting-questionlisting-module-ngfactory.9fb5664186e548931ad9.js",
+        "/quiz-quiz-module-ngfactory.9b71d783a47dfb1654a5.js",
+        "/result-result-module-ngfactory.9ef4a7de0c1e2dbda559.js",
+        "/runtime.89f14dd0e072811f5ebf.js",
+        "/styles.d4a431222415b3bf6bcf.css",
+        "/vendor.b220538a191a5a6660e9.js"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/assets/icons/icon-128x128.png",
+        "/assets/icons/icon-144x144.png",
+        "/assets/icons/icon-152x152.png",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/icons/icon-72x72.png",
+        "/assets/icons/icon-96x96.png",
+        "/assets/logo-white.png",
+        "/assets/logo.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/logo-white.png": "edf63e9de7958d56c86bfb2ad301b3646d821627",
+    "/assets/logo.png": "4e0b55417ece591738c8b1d6f8451427ab295e0d",
+    "/candidate-candidate-module-ngfactory.168451963511fd966c6b.js": "329ab41a996854d89005184a4a669c149780a65e",
+    "/candidate-candidate-module-ngfactory~dashboard-dashboard-module-ngfactory~login-login-module-ngfacto~0770bc37.7a0999348e1ae0fd3bf4.js": "4c6f970aef7d41d70b3644d2e62e0e8d55080eec",
+    "/candidate-candidate-module-ngfactory~dashboard-dashboard-module-ngfactory~questionlisting-questionli~da50e860.ef74efdee0b6c06e2c39.js": "92acca7b262d3a43ceb7a29528017f1f97989c02",
+    "/candidate-candidate-module-ngfactory~questionlisting-questionlisting-module-ngfactory.b4142dc122a03c7b1e77.js": "d6cac586c196099368b086cb5fb1e9d2ef3ffed4",
+    "/common.9c09a8660ca802e9e27a.js": "f152392b33b8553c65c7fa0fb0fd9708fefbcb5d",
+    "/dashboard-dashboard-module-ngfactory.657511b34b608260c6f4.js": "0de8f5a7ea12a892cae985af87a5000befb80c07",
+    "/favicon.ico": "e8483fe844f801efffbb39b309f7464fe0fbd6e6",
+    "/index.html": "c3329907788aab3cab02a4417ed745df14fe3fe0",
+    "/instruction-instruction-module-ngfactory.497ab0b69b72974474df.js": "29941071fac0fc49c344904a5462966d6ced7df9",
+    "/login-login-module-ngfactory.723a133714b8ff79b9fe.js": "aa18dfbffe136a926839427d45720b074c36befa",
+    "/main.f074fdc12ce59f1b6ca3.js": "e076a4edff5deefa4759ef7bce801913522443f9",
+    "/polyfills.386e7f94cf2010bfbabf.js": "7575ebad9c6fc4c482102147c3ec8fd80b7ef2d1",
+    "/questionlisting-questionlisting-module-ngfactory.9fb5664186e548931ad9.js": "93c3ef9b4169e7382687950de90c59598a5d7533",
+    "/quiz-quiz-module-ngfactory.9b71d783a47dfb1654a5.js": "3902d54b6aa3f738555a719ecb2f9e3456822f2f",
+    "/result-result-module-ngfactory.9ef4a7de0c1e2dbda559.js": "78abea743ff4b6aaf617bc352d2b77d2ec118d99",
+    "/runtime.89f14dd0e072811f5ebf.js": "61804180808cb89abf30f21a5641b8e6b4613a3d",
+    "/styles.d4a431222415b3bf6bcf.css": "65f1eab45a7e5968213ac86ff4b33c6913539b21",
+    "/vendor.b220538a191a5a6660e9.js": "3a7c3abcb74efe87448c90ffba84f593008e2881"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}

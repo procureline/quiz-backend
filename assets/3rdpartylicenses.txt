@@ -807,6 +807,10 @@ querystring@0.2.0
 MIT
 MIT
 
+@angular/service-worker@6.1.10
+MIT
+MIT
+
 @angular/core@6.1.9
 MIT
 MIT
