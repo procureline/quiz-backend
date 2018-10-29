@@ -9,6 +9,7 @@
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
     "async": "2.0.1",
+    "eslint": "^5.6.1",
     "grunt": "1.0.1",
     "jsonwebtoken": "^8.3.0",
     "machinepack-mysql": "^3.0.3",
@@ -23,6 +24,7 @@
     "sails-mysql": "^1.0.0"
   },
   "devDependencies": {
+    "@sailshq/eslint": "^4.19.3",
     "grunt-contrib-watch": "1.1.0",
     "grunt-sync": "^0.8.0"
   },
