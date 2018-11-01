@@ -7,8 +7,51 @@ module.exports = {
     async getCandidate(req,res){
         let request_data=req.query;
         await Candidate.find()
-        .then((result)=>{
+        .then(async (result)=>{
+            
+            return new Promise((resolve,reject)=>{
+                let candidate=[]
+                async.each(result,async (item,cb)=>{
+                    let object= Object.assign({})
+                    await CandidateResult.find({candidate_id:item.id})
+                    .populate('skill_id')
+                    .then((data)=>{
+                        object.result=data;
+                        object.candidate=result;
+                        
+                        candidate.push(object);
+                        cb()
+                    })
+                },()=>{
+                    
+                    return ResponseService.json(200, res, "Candidate retrieve successful", candidate)
+                    
+                    
+                })
+                
+                
+                
+                
+            })
+            
+            
+            
+        })
+        .catch((err)=>{
+            return ResponseService.json(500, res, err)
+        });
+    },
+
+    async  getCandidateListing(req,res){
+        let request_data=req.query;
+        await Candidate.find()
+        .then(async (result)=>{
+            
             return ResponseService.json(200, res, "Candidate retrieve successful", result)
+
+            
+            
+            
         })
         .catch((err)=>{
             return ResponseService.json(500, res, err)
@@ -97,7 +140,7 @@ module.exports = {
             return ResponseService.json(500, res, err)
         });
     },
-
+    
     async addResume(req,res){
         let request_data=req.body;
         let setfilename=`${Date.now()}.doc`
@@ -118,7 +161,7 @@ module.exports = {
         await Candidate.count({
             candidate_email:request_data.candidate_email,            
             id:{'!':request_data.id}
-        
+            
         })
         .then( async (result)=>{
             sails.log('result',result)
@@ -130,7 +173,7 @@ module.exports = {
                     candidate_name: request_data.candidate_name,
                     candidate_email: request_data.candidate_email,
                     phone: request_data.phone,
-                     address: request_data.address,
+                    address: request_data.address,
                     skill: request_data.skill.toString(),
                     experience: request_data.experience,
                     education: request_data.education,
@@ -147,5 +190,5 @@ module.exports = {
             return ResponseService.json(500, res, err)
         });
     },
-
- };
+    
+};

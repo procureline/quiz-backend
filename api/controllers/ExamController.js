@@ -45,19 +45,28 @@ module.exports = {
                     resolve(correctAnswer)
                 })
             }).then(async (correctAnswer)=>{
-                
-                 await  CandidateResult.update({
+                await  CandidateResult.findOne({
                     examination_code:request_data.examination_code,
                     skill_id:request_data[0].skill
+                }).then(async (candidateresult)=>{
+                    await  CandidateResult.update({
+                        examination_code:request_data.examination_code,
+                        skill_id:request_data[0].skill
+                    })
+                    .set({
+                        exam_finished:request_header.exam_finished,
+                        exam_over:1,
+                        score:correctAnswer,
+                        percentage:(((100/candidateresult.total_question)*correctAnswer).toFixed(2))
+                    }).fetch()
+                    .then((result)=>{
+                        return ResponseService.json(200, res, "Exam added successful",result);
+                    })
+                
+                
                 })
-                .set({
-                    exam_finished:request_header.exam_finished,
-                    exam_over:1,
-                    score:correctAnswer
-                }).fetch()
-                .then((result)=>{
-                    return ResponseService.json(200, res, "Exam added successful",result);
-                })
+                
+               
             })
         })
     },
@@ -89,9 +98,23 @@ module.exports = {
         await Exam.find({skill_id:request_data.skill_id,examination_code:request_data.examination_code})
         .populate('question')
         .populate('skill_id')
-        .then((result)=>{
-            return ResponseService.json(200, res, "Candidate Score retrieve successful",result);
+        .then(async (result)=>{
+
+            await CandidateResult.find({examination_code:request_data.examination_code}) 
+            .then((examresult)=>{
+            let obj={
+                skillscore:result,
+                exam:examresult
+            }
+
+            return ResponseService.json(200, res, "Candidate Score retrieve successful",obj);
+
+            })
+
         })
+
+
+
         .catch((err)=>{
             return ResponseService.json(500, res, "err", err);
         })

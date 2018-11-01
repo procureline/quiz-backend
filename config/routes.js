@@ -25,7 +25,10 @@ module.exports.routes = {
     view: 'pages/homepage',
   },
 
- 
+  // '/exam': {
+  //   view: 'pages/homepage',
+  // },
+
   //
   // ──────────────────────────────────────────────────────────── I ──────────
   //   :::::: A U T H   R O U T E : :  :   :    :     :        :          :
@@ -58,5 +61,7 @@ module.exports.routes = {
 
   'POST /api/add-candidate-resume': 'Candidate.addResume', 
   'POST /api/update-question-image': 'QuestionController.updateQuestionImage', 
+  'GET /api/get-candidate-listing': 'Candidate.getCandidateListing', 
+
   
 }
