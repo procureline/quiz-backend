@@ -17,7 +17,7 @@ module.exports = {
                     .populate('skill_id')
                     .then((data)=>{
                         object.result=data;
-                        object.candidate=result;
+                        object.candidate=item;
                         
                         candidate.push(object);
                         cb()
@@ -82,7 +82,6 @@ module.exports = {
                     education: request_data.education,
                     refrence: request_data.refrence,
                 }
-                console.log(obj);
                 await Candidate.create(obj).fetch()
                 .then(function (result){
                     return ResponseService.json(200, res, "Candidate created successful", result)
@@ -118,7 +117,6 @@ module.exports = {
         await Candidate.findOne({id:request_data.id})
         .then((item)=>{
             let candidate=[]
-            console.log('tag', item)
             var val={}
             let skill=item.skill.split(",")
             sails.log(skill)
@@ -179,7 +177,6 @@ module.exports = {
                     education: request_data.education,
                     refrence: request_data.refrence,
                 }
-                console.log(obj);
                 await Candidate.update({id:request_data.id}).set(obj)
                 .then(function (result){
                     return ResponseService.json(200, res, "Candidate updated successful", result)

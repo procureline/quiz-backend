@@ -78,7 +78,6 @@ module.exports = {
                 limtcall:request_data.difficulty
             }
         ]
-        console.log('tag', level,'level');
         let question=  new Promise((resolve,reject)=>{
             let ques=[] 
             async.each(level , async (item,cb)=>{
