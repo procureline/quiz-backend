@@ -12,7 +12,8 @@ module.exports = {
             code:param.code,
             skill: param.skill,
             correct_answer:param.correct_answer,
-            level:param.level
+            level:param.level,
+            status:1
         }
         await Question.create(obj)
         .then( (result)=>{
