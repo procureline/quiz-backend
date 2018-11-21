@@ -23,6 +23,15 @@ module.exports.policies = {
      'login': true,
    
     },
+       
+    'TestapiController': {
+      'getTestapi': true,
+      'addTestapi': true,
+      'deleteTestapi': true,
+      'updateTestapi': true,
+    
+     },
+  
  
     'CandidateResultController': {
       'verifyExamCode': true,

@@ -22,7 +22,7 @@ module.exports =  (req, res, next)=> {
     req.token = token;
     Admin.findOne({id: decoded.id})
     .then((user)=>{
-
+console.log('tag', user)
       req.current_user = user;
       next();
     })

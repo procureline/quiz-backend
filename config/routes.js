@@ -62,6 +62,16 @@ module.exports.routes = {
   'POST /api/add-candidate-resume': 'Candidate.addResume', 
   'POST /api/update-question-image': 'QuestionController.updateQuestionImage', 
   'GET /api/get-candidate-listing': 'Candidate.getCandidateListing', 
+  'POST /api/update-password': 'AdminController.updatePassword', 
 
-  
+   //
+   // ────────────────────────────────────────────────────── I ──────────
+   //   :::::: T E S T A P I : :  :   :    :     :        :          :
+   // ────────────────────────────────────────────────────────────────
+   //
+
+   'POST /api/add': 'TestapiController.addTestapi', 
+   'GET /api/get': 'TestapiController.getTestapi', 
+   'POST /api/delete': 'TestapiController.deleteTestapi', 
+   'POST /api/update': 'TestapiController.updateTestapi', 
 }
